@@ -5,9 +5,11 @@
 using namespace cv;
 using namespace std;
 
+const int MAX = 5;
+const int INTERVAL = 500;
+
 int main(int argc, char** argv)
 {
-    string files[] = {"foto1.jpg", "foto2.jpg", "foto3.jpg", "foto4.jpg", "foto5.jpg"};
     VideoCapture vid(0);
 
     bool take = false;
@@ -15,18 +17,22 @@ int main(int argc, char** argv)
     while (vid.isOpened())
     {
         Mat frame;
-        bool success = vid.read(frame);
+        if (!vid.read(frame))
+        {
+            cout << "Video camera is disconnected" << endl;
+            break;
+        }
 
-        imshow("Frame", frame);
-        if (waitKey(500) == ' ')
+        imshow("Preview", frame);
+
+        if (waitKey(INTERVAL) == ' ')
             take = true;
         if (take)
         {
-            imwrite(files[count], frame);
-            if (++count == 5)
-            {
+            count++;
+            imwrite("foto" + to_string(count) + ".jpg", frame);
+            if (count == MAX)
                 break;
-            }
         }
         
     }
