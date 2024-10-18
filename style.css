@@ -1,0 +1,80 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-image: url('imagens/header.jpg'); /* Imagem clara de fundo */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 30px 50px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+h1 {
+    font-size: 2.5rem;
+    color: #333;
+    margin: 0;
+}
+
+.logo-faculdade {
+    width: 90px;
+    height: auto;
+}
+
+
+main {
+    margin: 0 auto;
+    padding: 0;
+    width: 85%;
+}
+
+section {
+    margin-bottom: 2rem;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+ul.membros li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+ul.membros li img {
+    border-radius: 50%;
+    width: 70px;
+    height: 70px;
+    margin-right: 15px;
+}
+
+.info-membro {
+    line-height: 1.6;
+}
+
+a {
+    text-decoration: none;
+    color: #4952d4;
+    font-weight: bold;
+}
+
+a:hover {
+    color: #4952d4;
+}
+
+h2 {
+    color: #333;
+}
