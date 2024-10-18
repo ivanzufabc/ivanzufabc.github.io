@@ -39,6 +39,23 @@
     
     <h2>2. Fundamentos básicos</h2>
     <p>O processamento de mídia consiste em receber uma mídia como entrada, realizar alguma operação sobre ela e então devolver a mídia processada. Uma mídia pode ser um vídeo ou uma imagem, e pode provir de ou ser enviada a um arquivo ou dispositivo (câmera, filmadora, monitor, projetor, etc). O tipo de mídia da entrada pode ser diferente do tipo da saída.</p>
+    <p>Fundamentos utilizando a biblioteca OpenCV e a linguagem C++</p>
+    <ol>
+      <li>Leitura, Exibição e Escrita de Imagens</li>
+      <ul>
+          <li><strong>Leitura de Imagem:</strong> A função <code>imread()</code> é utilizada para carregar uma imagem de um arquivo. O caminho da imagem é especificado como um argumento, e ela é armazenada como uma matriz (array multidimensional) em que cada valor representa um pixel.</li>
+          <li><strong>Exibição de Imagem:</strong> A função <code>imshow()</code> permite exibir a imagem em uma janela. Um nome para a janela é passado como argumento, junto com a imagem a ser exibida.</li>
+          <li><strong>Escrita de Imagem:</strong> A função <code>imwrite()</code> possibilita salvar a imagem processada em um arquivo. O caminho de destino e a imagem a ser salva são os principais parâmetros desta função.</li>
+      </ul>
+  
+      <li>Leitura e Gravação de Vídeos</li>
+      <ul>
+          <li><strong>Leitura de Vídeo:</strong> Para ler vídeos, utiliza-se a classe <code>VideoCapture</code>. Ela permite abrir arquivos de vídeo ou capturar diretamente da câmera. A função <code>VideoCapture read()</code> é usada para capturar cada quadro do vídeo.</li>
+          <li><strong>Exibição de Vídeo:</strong> Assim como as imagens, vídeos podem ser exibidos utilizando <code>imshow()</code>, passando cada quadro em sequência.</li>
+          <li><strong>Gravação de Vídeo:</strong> A classe <code>VideoWriter</code> permite gravar vídeos em um arquivo. Parâmetros como o nome do arquivo de saída, o codec, a taxa de quadros e o tamanho dos quadros são especificados ao criar o objeto <code>VideoWriter</code>.</li>
+      </ul>
+    </ol>
+
     
     <h2>3. Materiais e Métodos</h2>
     <p>Para realizar a atividade, utilizamos os seguintes recursos:</p>
