@@ -22,13 +22,13 @@ int main(int argc, char** argv) {
     }
 
     Mat result;
-    // Aplicando o filtro bilateral (d = 9, sigmaColor = 75, sigmaSpace = 75)
-    bilateralFilter(image, result, kernel, kernel*2, kernel/2);
+    // Aplicando o filtro mediano (kernel 3x3)
+    medianBlur(image, result, kernel);
 
     // Exibindo e salvando o resultado
-    namedWindow("Filtro Bilateral - " + kernel_str, WINDOW_AUTOSIZE);
-    imshow("Filtro Bilateral - " + kernel_str, result);
-    imwrite("bilateral_" + kernel_str + ".jpg", result); // Salvando o resultado
+    namedWindow("Filtro Mediano - " + kernel_str, WINDOW_AUTOSIZE);
+    imshow("Filtro Mediano - " + kernel_str, result);
+    imwrite("mediana_" + kernel_str + ".jpg", result); // Salvando o resultado
 
     waitKey(0);
     return 0;
