@@ -5,7 +5,7 @@ using namespace cv;
 using namespace std;
 
 int main() {
-    Mat image = imread("imagem_original.jpg");
+    Mat image = imread("../lab01/foto_grupo.jpg");
     if(image.empty()) {
         cout << "Erro ao abrir a imagem!" << endl;
         return -1;
