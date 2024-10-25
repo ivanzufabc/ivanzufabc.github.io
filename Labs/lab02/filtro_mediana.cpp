@@ -7,15 +7,16 @@ using namespace std;
 
 int main(int argc, char** argv) {
     int kernel;
-    if (argc == 2) {
-        kernel = boost::lexical_cast<int>(argv[1]);
+    if (argc == 3) {
+        kernel = boost::lexical_cast<int>(argv[2]);
     }
     else {
-        kernel = 3;
+       cout << "Quantidade incorreta de argumentos!" << endl;
+       return -1;
     }
     string kernel_str = to_string(kernel) + "x" + to_string(kernel);
 
-    Mat image = imread("../lab01/foto_grupo.jpg");
+    Mat image = imread(argv[1]);
     if(image.empty()) {
         cout << "Erro ao abrir a imagem!" << endl;
         return -1;

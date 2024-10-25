@@ -6,21 +6,17 @@ using namespace cv;
 using namespace std;
 
 int main(int argc, char** argv) {
-    int kernel_x, kernel_y;
-    if (argc == 2) {
-        kernel_x = boost::lexical_cast<int>(argv[1]);
-        kernel_y = kernel_x;
-    }
-    else if (argc == 3) {
-        kernel_x = boost::lexical_cast<int>(argv[1]);
-        kernel_y = boost::lexical_cast<int>(argv[2]);
+    int kernel;
+    if (argc == 3) {
+        kernel = boost::lexical_cast<int>(argv[2]);
     }
     else {
-        kernel_x = kernel_y = 3;
+       cout << "Quantidade incorreta de argumentos!" << endl;
+       return -1;
     }
-    string kernel_str = to_string(kernel_x) + "x" + to_string(kernel_y);
+    string kernel_str = to_string(kernel) + "x" + to_string(kernel);
 
-    Mat image = imread("../lab01/foto_grupo.jpg");
+    Mat image = imread(argv[1]);
     if(image.empty()) {
         cout << "Erro ao abrir a imagem!" << endl;
         return -1;
@@ -28,7 +24,7 @@ int main(int argc, char** argv) {
 
     Mat result;
     // Aplicando o filtro Gaussiano (kernel 3x3, sigmaX = 0)
-    GaussianBlur(image, result, Size(kernel_x, kernel_y), 0);
+    GaussianBlur(image, result, Size(kernel, kernel), 0);
 
     // Exibindo e salvando o resultado
     namedWindow("Filtro Gaussiano - " + kernel_str, WINDOW_AUTOSIZE);
