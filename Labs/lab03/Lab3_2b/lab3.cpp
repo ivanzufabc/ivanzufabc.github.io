@@ -11,13 +11,8 @@ const String window_detection_blur_name = "Object Detection Blur";
 int lowThreshold = 0;
 const int max_lowThreshold = 100;
 const int ratio = 3;
-const int kernel_size = 3;
+int kernel_size = 11;
 
-static void on_threshhold_trackbar(int, void *)
-{
-    setTrackbarPos("Low Threshold", window_detection_name, lowThreshold);
-}
- 
 int main(int argc, char* argv[])
 {
     VideoCapture cap(argc > 1 ? atoi(argv[1]) : 0);
@@ -27,8 +22,7 @@ int main(int argc, char* argv[])
     namedWindow(window_detection_blur_name);
  
     // Trackbars to set thresholds for HSV values
-    createTrackbar( "Min Threshold:", window_detection_name, &lowThreshold, max_lowThreshold, on_threshhold_trackbar );
-    on_threshhold_trackbar(0, 0);
+    createTrackbar( "Min Threshold:", window_detection_name, &lowThreshold, max_lowThreshold );
 
     Mat frame, frame_blur, frame_edges;
     while (true) {
@@ -39,14 +33,15 @@ int main(int argc, char* argv[])
         }
         
         //Aplicando filtro gaussiano
-        GaussianBlur(frame, frame_blur, Size(3, 3), 0);
+        GaussianBlur(frame, frame_blur, Size(kernel_size, kernel_size), 0);
  
+        //Aplicando o detector de CANNY
         Canny(frame_blur, frame_edges, lowThreshold, kernel_size);
 
         // Show the frames
         imshow(window_capture_name, frame);
-        imshow(window_detection_name, frame_blur);
-        imshow(window_detection_blur_name, frame_edges);
+        imshow(window_detection_name, frame_edges);
+        imshow(window_detection_blur_name, frame_blur);
         
         char key = (char) waitKey(30);
         if (key == 'q' || key == 27)
